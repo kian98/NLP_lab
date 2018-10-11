@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>宋词生成</title>
+    <script>var recommend ={{ recommend|tojson }}</script>
+    <link rel="icon" href="../static/icon.png" type="image/x-icon"/>
+    <style>
+        .confirm {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.24), 0 12px 25px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .input {
+            border: 1px solid #ccc;
+            padding: 7px 0px;
+            border-radius: 3px;
+            padding-left: 5px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+        }
+
+        .input :focus {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+        }
+
+        .output {
+            width: 50%;
+            height: 320px;
+            padding: 15px;
+            background-color: #b2dfdb;
+            box-shadow: 10px 10px 5px grey;
+            font-family: Fangsong;
+            font-size: large;
+            text-align: center;
+            line-height: 180%;
+            overflow-y: auto
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div style="opacity:0.5;position:absolute;top:50px;left:40px;width:200px;height:80px;background-color:#ff8f00"></div>
+
+<div style="font-family:verdana;padding:20px;border-radius:10px;border:10px solid #9fa8da;background: url('../static/background.jpg')  no-repeat;background-size: 100% 100%;">
+
+    <div style="opacity:0.3;position:absolute;left:80px;width:50px;height:160px;background-color:#4db6ac"></div>
+
+    <div align="center">
+        <span style="color: #37474f;font-family: 华文行楷; font-size: 80px;text-shadow: 2px 2px 3px dimgray">宋词生成</span>
+    </div>
+
+    <form method="post">
+        <div align="center">
+            <p><strong style="letter-spacing: 5px; font-family: 华文楷体; font-size: larger">输入词牌名：</strong></p>
+            <input type="text" class="input" name=ci_name value="默认随机生成" ; style="color: gray"
+                   onclick="this.style.color='black';this.value='';">
+            <input class="confirm" type="submit" value="确认">
+            <br>
+            <p>
+                <span style="color: gray;font-size: small">推荐(点击使用)： </span>
+                <label style="font-style: italic"
+                       onclick="document.getElementsByName('ci_name')[0].value=recommend">{{ recommend }}</label>
+            </p>
+            <strong style="letter-spacing: 5px;font-family: 华文楷体; font-size: larger">生成内容：</strong>
+            <br>
+            <br>
+            <textarea class="output" readonly="readonly">{{ ci_content }}</textarea>
+        </div>
+    </form>
+
+</div>
+
+<p style="text-align: center"><a href="{{ url_for('index') }}">返回首页</a></p>
+
+</body>
+
+</html>
